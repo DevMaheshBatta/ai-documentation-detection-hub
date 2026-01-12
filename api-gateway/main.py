@@ -40,3 +40,4 @@ async def upload(file: UploadFile = File(...)):
         "extracted_text": extracted_text,
         "prediction": prediction
     }
+

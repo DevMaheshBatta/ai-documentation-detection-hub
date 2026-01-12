@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "8000:8000"
+    depends_on:
+      - ml-classifier
+      - ocr-nlp-service
+
+  ml-classifier:
+    build: ./ml-classifier
+    ports:
+      - "8001:8001"
+
+  ocr-nlp-service:
+    build: ./ocr-nlp-service
+    ports:
+      - "8002:8002"
