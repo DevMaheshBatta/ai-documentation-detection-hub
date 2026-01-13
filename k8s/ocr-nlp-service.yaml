@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ocr-nlp-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ocr-nlp-service
+  template:
+    metadata:
+      labels:
+        app: ocr-nlp-service
+    spec:
+      containers:
+        - name: ocr-nlp-service
+          image: ai-doc-detection-hub-ocr-service:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8002
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ocr-nlp-service
+spec:
+  type: ClusterIP
+  selector:
+    app: ocr-nlp-service
+  ports:
+    - protocol: TCP
+      port: 8002
+      targetPort: 8002

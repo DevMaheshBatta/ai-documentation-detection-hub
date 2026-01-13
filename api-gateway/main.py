@@ -41,3 +41,6 @@ async def upload(file: UploadFile = File(...)):
         "prediction": prediction
     }
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}

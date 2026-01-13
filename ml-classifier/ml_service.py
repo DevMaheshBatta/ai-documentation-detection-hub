@@ -18,3 +18,6 @@ def predict(data: DocumentRequest):
     X = vectorizer.transform([data.text])
     prediction = model.predict(X)[0]
     return {"document_type": prediction}
+@app.get("/health")
+def health():
+    return {"status": "ok"}

@@ -30,3 +30,6 @@ async def extract(file: UploadFile = File(...)):
     text = text.replace("\n", " ").strip()
 
     return {"filename": file.filename, "extracted_text": text}
+@app.get("/health")
+def health():
+    return {"status": "ok"}
